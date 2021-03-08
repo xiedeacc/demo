@@ -12,7 +12,13 @@ load("@bazel_tools//tools/build_defs/repo:http.bzl", "http_archive")
 git_repository(
     name = "protobuf_plugin_demo",
     remote = "https://github.com/xiedeacc/protobuf_plugin_demo.git",
-    commit = "837ce66c80c2eba7a03e308899e343317d2028c9",
+    commit = "9ee6a3b21c3c9a81ca3c59ae8364fb69f14b3460",
+)
+
+git_repository(
+    name = "cc_grpc_library_demo",
+    remote = "https://github.com/xiedeacc/cc_grpc_library_demo.git",
+    commit = "829dbf14fdff70a44989ad6e53dc4aeb4cee190c",
 )
 
 git_repository(
@@ -142,12 +148,6 @@ git_repository(
     name = "boost",
     remote = "https://github.com/xiedeacc/boost.git",
     tag = "v1.69.0",
-)
-
-git_repository(
-    name = "cc_grpc_library_demo",
-    remote = "https://github.com/xiedeacc/cc_grpc_library_demo.git",
-    commit = "829dbf14fdff70a44989ad6e53dc4aeb4cee190c",
 )
 
 git_repository(
