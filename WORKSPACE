@@ -92,12 +92,6 @@ git_repository(
 # grpc dependencies
 #####################################################################
 git_repository(
-    name = "com_google_protobuf",
-    remote = "https://github.com/protocolbuffers/protobuf.git",
-    tag = "v3.15.1",
-)
-
-git_repository(
     name = "upb",
     commit = "eb0fdda14b7b211872507a66f7d988f7c24a44c9",
     remote = "https://github.com/protocolbuffers/upb.git",
