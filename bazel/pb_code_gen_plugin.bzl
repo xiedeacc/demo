@@ -59,12 +59,9 @@ def _proto_generate_impl(ctx):
     protoc = _get_offset_path(execdir, ctx.executable.protoc.path)
     plugin = _get_offset_path(execdir, ctx.executable.plugin.path)
     dir_out = _get_offset_path(execdir, ctx.executable.plugin.dirname)
-    plugin_directory = ctx.attr.data[0].files.to_list()[0].dirname
 
     out_files = [ctx.actions.declare_file(out) for out in ctx.attr.outs]
     path = _get_offset_path(execdir, ctx.files.src[0].path)
-
-    #print(path)
 
     all_files = ctx.attr.src.files.to_list()
     protoc_cmd = [protoc]
@@ -82,7 +79,7 @@ def _proto_generate_impl(ctx):
             protoc_cmd += ["-I" + rpath + "=" + ppath]
 
     protoc_cmd += ["--plugin=protoc-gen-PLUGIN=" + plugin]
-    protoc_cmd += ["--PLUGIN_opt=" + plugin_directory]
+
     protoc_cmd += ["--PLUGIN_out=" + dir_out]
     protoc_cmd += [path]
 

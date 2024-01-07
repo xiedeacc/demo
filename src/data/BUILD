@@ -26,9 +26,6 @@ cc_proto_plugin(
     outs = [
         "loader_impl.h",
     ],
-    data = [
-        "//src/data/template:loader_impl.h",
-    ],
     linkstatic = True,
     plugin = ":pb_code_generator",
     proto_deps = ["//src/proto:config.proto"],
