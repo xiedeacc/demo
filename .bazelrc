@@ -1,0 +1,30 @@
+test:cpplint --test_tag_filters=cpplint
+test:cpplint --build_tests_only
+test:unit_test --test_tag_filters=-cpplint
+test:unit_test --test_env HEAPCHECK=normal
+test:coverage --test_tag_filters=-cpplint
+test:coverage --copt=--coverage
+test:coverage --cxxopt=--coverage
+test:coverage --cxxopt=-fprofile-arcs
+test:coverage --cxxopt=-ftest-coverage
+test:coverage --linkopt=-coverage
+test:coverage --linkopt=-lgcov
+test:coverage --linkopt=-lgcc
+test:coverage --linkopt=-lc
+test:coverage --nocache_test_results
+
+#build --workspace_status_command=tools/workspace_status.sh
+#build --experimental_downloader_config=.bazel_downloader.cfg
+build --cxxopt='-D_GLIBCXX_USE_CXX11_ABI=1'
+build -c opt
+build --copt='-g'
+build --copt='-O2'
+build --copt='-Wall'
+build --copt='-march=native'
+build --cxxopt='-std=c++17'
+build --host_cxxopt='-std=c++17'
+build --strip='never'
+build --output_filter="^//"
+build --define=with_glog=true
+#build --keep_going
+
