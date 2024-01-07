@@ -9,9 +9,6 @@ cc_binary(
         "pb_code_generator.cc",
         "pb_code_generator.h",
     ],
-    data = [
-        "//src/data/template:loader_impl.h",
-    ],
     linkstatic = True,
     deps = [
         "//src/util",
