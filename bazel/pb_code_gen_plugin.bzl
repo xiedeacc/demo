@@ -122,13 +122,12 @@ _proto_generate = rule(
             allow_files = True,
         ),
         "outs": attr.string_list(),
-        "data": attr.label_list(allow_files = True),
     },
     output_to_genfiles = True,
     implementation = _proto_generate_impl,
 )
 
-def proto_generate(name, src, proto_deps, proto_path, protoc, plugin, data, outs = []):
+def proto_generate(name, src, proto_deps, proto_path, protoc, plugin, outs = []):
     args = {}
     args.update({
         "name": name,
@@ -137,7 +136,6 @@ def proto_generate(name, src, proto_deps, proto_path, protoc, plugin, data, outs
         "proto_path": proto_path,
         "protoc": protoc,
         "plugin": plugin,
-        "data": data,
         "outs": outs,
     })
     return _proto_generate(**args)
@@ -149,12 +147,11 @@ def cc_proto_plugin(
         proto_path,
         protoc,
         plugin,
-        data = [],
         outs = [],
         deps = [],
         **kwargs):
     proto_name = name + "_proto"
-    proto_generate(proto_name, src, proto_deps, proto_path, protoc, plugin, data, outs)
+    proto_generate(proto_name, src, proto_deps, proto_path, protoc, plugin, outs)
     native.cc_library(
         name = name,
         srcs = [proto_name],
